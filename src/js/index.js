@@ -26,19 +26,19 @@ let users = [
 console.log(users.filter(user => user.age < 20))
 
 console.log('------------- #8')
-let getNames = (arr) => {
-    let res = []
-    arr.forEach(el => res.push(el.name))
-    return res
-}
+let getNames = (arr) => arr.map(el => el.name)
 let names = getNames(users)
 console.log(names)
 
 console.log('------------- #9')
-let filterRangeInPlace = (arr, a, b) => arr.filter(el => a <= el && el <= b)
+let filterRangeInPlace = (arr, a, b) => arr.forEach((el,key) => {
+    if (a <= el || el <= b) {
+        arr.splice(key,1)
+    }
+})
 
 let arr = [5, 3, 8, 1];
-arr = filterRangeInPlace(arr, 1, 4);
+filterRangeInPlace(arr, 1, 4);
 console.log( arr );
 
 console.log('------------- #10')
